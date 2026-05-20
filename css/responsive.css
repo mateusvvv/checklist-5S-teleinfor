@@ -7,9 +7,13 @@
         padding: 0.75rem 12px;
     }
 
-    .logo {
-        text-align: left;
-        font-size: 1.25rem;
+    .brand {
+        flex: 1 1 auto;
+    }
+
+    .brand-logo {
+        width: 132px;
+        height: 42px;
     }
 
     .user-selector {

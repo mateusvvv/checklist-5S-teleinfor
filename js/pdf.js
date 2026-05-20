@@ -61,7 +61,7 @@ function adicionarTermoResponsabilidade(pdf, startY) {
     let y = ensurePdfSpace(pdf, startY, 60);
     const termo = [
         "TERMO DE RESPONSABILIDADE DE USO DE FERRAMENTAS",
-        "Na condição de funcionário da empresa DIGITAL, inscrita no CNPJ/MF sob o nº 07.578.965/0001-05, com sede na cidade de Belo Jardim, Estado de Pernambuco, declaro receber, neste ato, o equipamento de trabalho administrativo, neste ato designado de BEM, em perfeito estado de conservação e funcionamento, e comprometo-me, pelo presente TERMO DE RESPONSABILIDADE, a usá-lo, exclusivamente, no desempenho de minhas funções, bem como a conservá-lo no mesmo estado, e, ainda, a devolvê-lo à empresa, por sua solicitação ou quando vier a me desligar de seus quadros funcionais, ocasião em que será devolvida a via deste Termo por mim assinada, ora entregue à empresa.",
+        "Na condição de funcionário da empresa Teleinfor, inscrita no CNPJ/MF sob o nº 07.578.965/0001-05, com sede na cidade de Belo Jardim, Estado de Pernambuco, declaro receber, neste ato, o equipamento de trabalho administrativo, neste ato designado de BEM, em perfeito estado de conservação e funcionamento, e comprometo-me, pelo presente TERMO DE RESPONSABILIDADE, a usá-lo, exclusivamente, no desempenho de minhas funções, bem como a conservá-lo no mesmo estado, e, ainda, a devolvê-lo à empresa, por sua solicitação ou quando vier a me desligar de seus quadros funcionais, ocasião em que será devolvida a via deste Termo por mim assinada, ora entregue à empresa.",
         "Estou ciente de que o consumo em ligações ou o consumo de outros serviços da operadora realizado que não estejam no grupo de serviços gratuitos informados pela empresa, ou ainda, danos porventura causados ao BEM, decorrentes de culpa minha, autorizarão a empresa a proceder aos descontos de meus créditos salariais ou rescisórios, conforme autorizam os artigos 462 § 1º e 477, § 5º, ambos da CLT.",
         "Comprometo-me assim especificamente a:",
         "Não emprestar ou permitir o uso do BEM por terceiros;",
@@ -211,7 +211,7 @@ export async function gerarPDF(titulo, dados, options = {}) {
         doc.setTextColor(255, 255, 255);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(16);
-        doc.text("DIGITAL Vistoria", 10, 10);
+        doc.text("Teleinfor Vistoria", 10, 10);
         doc.setFontSize(10);
         doc.text(reportName, 10, 17);
         doc.setFont("helvetica", "normal");

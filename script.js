@@ -67,7 +67,7 @@ function podeAcessarCategoria(category, vistoriador = getVistoriadorAtivo()) {
 
 function getAccessDeniedMessage(category, vistoriador) {
     if (category === "tablets") {
-        return "A vistoria de tablets só pode ser acessada por Italo ou Matheus.";
+        return "A vistoria de tablets só pode ser acessada por Teste 4 ou Teste 5.";
     }
 
     if (isTabletOnlyUser(vistoriador)) {
@@ -148,7 +148,7 @@ function selecionarResponsavelTablet() {
 function solicitarVistoriadorTablet() {
     const atual = isTabletOnlyUser() ? getVistoriadorAtivo() : "";
     const resposta = prompt(
-        "Para acessar a vistoria de tablets, informe o vistoriador logado: ITALO ou MATHEUS.",
+        "Para acessar a vistoria de tablets, informe o vistoriador logado: TESTE 4 ou TESTE 5.",
         atual
     );
 
@@ -158,7 +158,7 @@ function solicitarVistoriadorTablet() {
     const vistoriador = vistoriadoresTablet.find(nome => nome.toLowerCase() === normalizado);
 
     if (!vistoriador) {
-        alert("A vistoria de tablets só pode ser acessada por Italo ou Matheus.");
+        alert("A vistoria de tablets só pode ser acessada por Teste 4 ou Teste 5.");
         return false;
     }
 
@@ -379,7 +379,7 @@ async function finalizarVistoria(category) {
 
     if (!vistoriador) {
         alert(category === "tablets"
-            ? "Por favor, selecione Matheus ou Italo como responsável pela vistoria do tablet."
+            ? "Por favor, selecione Teste 4 ou Teste 5 como responsável pela vistoria do tablet."
             : "Por favor, selecione quem está realizando a vistoria no topo da página.");
         return;
     }

@@ -81,7 +81,7 @@ export const checklistData = {
 
 export const totalViaturas = 9;
 export const categoryNames = { ferramentas: "Ferramentas", epis: "EPIs", viaturas: "Viatura", tablets: "Tablet" };
-export const vistoriadoresTablet = ["Matheus", "Italo"];
+export const vistoriadoresTablet = ["Teste 4", "Teste 5"];
 
 export const damageTypeNames = {
     amassado: "Amassado",

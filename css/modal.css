@@ -81,10 +81,10 @@
 }
 
 .btn-confirm-review {
-    background-color: #007bff;
+    background-color: var(--primary-blue);
 }
 
 .btn-return-review {
     padding: 10px;
-    background-color: #6c757d;
+    background-color: var(--accent-blue);
 }

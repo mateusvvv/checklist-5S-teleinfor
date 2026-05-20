@@ -444,8 +444,10 @@ export function initAdminAuthListener() {
     onAuthStateChanged(auth, (user) => {
         const loginSec = document.getElementById("admin-login-section");
         const panelSec = document.getElementById("admin-panel-section");
+        const adminSec = document.getElementById("admin");
         loginSec.style.display = user ? "none" : "block";
         panelSec.style.display = user ? "block" : "none";
+        adminSec?.classList.toggle("admin-authenticated", Boolean(user));
         if (user) carregarHistorico();
     });
 }
