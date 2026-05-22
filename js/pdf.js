@@ -142,9 +142,9 @@ function getCategoryPromptDefault() {
 
 function buildReportTitle(viaturaId, categorias) {
     if (categorias.length === 1) {
-        return `Vistoria Viatura ${formatTwoDigits(viaturaId)} - ${categoryNames[categorias[0]]}`;
+        return `Vistoria Teste ${formatTwoDigits(viaturaId)} - ${categoryNames[categorias[0]]}`;
     }
-    return `Vistoria Viatura ${formatTwoDigits(viaturaId)}`;
+    return `Vistoria Teste ${formatTwoDigits(viaturaId)}`;
 }
 
 function carregarImagem(src) {
@@ -245,8 +245,8 @@ export async function gerarPDF(titulo, dados, options = {}) {
 
     function addColumnText(text, opts = {}) {
         const x = columns[cursor.col].x;
-        const size = opts.size || 8;
-        const lineHeight = opts.lineHeight || 4;
+        const size = opts.size || 9; // Aumentado de 8 para 9 para melhor leitura
+        const lineHeight = opts.lineHeight || 5; // Aumentado de 4 para 5 para dar mais respiro
         doc.setFont("helvetica", opts.bold ? "bold" : "normal");
         doc.setFontSize(size);
         const lines = doc.splitTextToSize(text, columnWidth);
@@ -280,9 +280,9 @@ export async function gerarPDF(titulo, dados, options = {}) {
 
         const dataObj = getDataEnvioDate(v);
         const equipamento = v.categoria === "tablets"
-            ? `Tablet ${formatTwoDigits(v.tabletId || v.viaturaId)} / Viatura ${formatTwoDigits(v.viaturaId)}`
-            : `Viatura ${formatTwoDigits(v.viaturaId)}`;
-        addColumnText(`${equipamento} - ${categoryNames[v.categoria] || v.categoria}`, { bold: true, size: 10, lineHeight: 5 });
+            ? `Tablet ${formatTwoDigits(v.tabletId || v.viaturaId)} / Teste ${formatTwoDigits(v.viaturaId)}`
+            : `Teste ${formatTwoDigits(v.viaturaId)}`;
+        addColumnText(`${equipamento} - ${categoryNames[v.categoria] || v.categoria}`, { bold: true, size: 11, lineHeight: 6 });
         addColumnText(`Vistoriador: ${v.vistoriador}`);
         addColumnText(`Data: ${dataObj.toLocaleString("pt-BR")}`);
 
@@ -309,11 +309,11 @@ export async function gerarPDF(titulo, dados, options = {}) {
             addColumnImage(tabletImage);
         }
 
-        addColumnText("Itens:", { bold: true });
+        addColumnText("Itens:", { bold: true, size: 10 });
         v.itens.forEach(item => {
             const s = item.status || "pendente";
-            let linha = `${item.item} ${s === "ok" ? "[OK]" : `[${s.toUpperCase()}]`}`;
-            if (item.observacao) linha += ` - Motivo: ${item.observacao}`;
+            let linha = `- ${item.item}: ${s === "ok" ? "OK" : s.toUpperCase()}`;
+            if (item.observacao) linha += ` (Obs: ${item.observacao})`;
             addColumnText(linha);
         });
 
@@ -387,9 +387,9 @@ export async function gerarRelatorioViatura(viaturaId = state.selectedViatura, o
             return;
         }
 
-        if (!confirmar || confirm(`Deseja gerar o relatório PDF da Viatura ${formatTwoDigits(viaturaId)}?`)) {
+        if (!confirmar || confirm(`Deseja gerar o relatório PDF do Teste ${formatTwoDigits(viaturaId)}?`)) {
             const sufixoCategoria = categorias.length === 1 ? `_${categoryNames[categorias[0]]}` : "";
-            await gerarPDF(`Relatorio_Vistoria_Viatura_${formatTwoDigits(viaturaId)}${sufixoCategoria}`, dadosViatura, {
+            await gerarPDF(`Relatorio_Vistoria_Teste_${formatTwoDigits(viaturaId)}${sufixoCategoria}`, dadosViatura, {
                 reportName: buildReportTitle(viaturaId, categorias)
             });
 
@@ -434,16 +434,16 @@ async function gerarRelatorioTodasViaturasHoje(categorias = Object.keys(category
 
     sortVistoriasPorCategoria(filtrados);
     const sufixoCategoria = categorias.length === 1 ? `_${categoryNames[categorias[0]]}` : "";
-    await gerarPDF(`Relatorio_5S_Todas_Viaturas_Hoje${sufixoCategoria}`, filtrados, {
+    await gerarPDF(`Relatorio_5S_Todos_Testes_Hoje${sufixoCategoria}`, filtrados, {
         reportName: categorias.length === 1
             ? `Vistoria 5S - ${categoryNames[categorias[0]]} do dia`
-            : "Vistoria 5S - Todas as viaturas do dia"
+            : "Vistoria 5S - Todos os testes do dia"
     });
 }
 
 export async function gerarRelatorioComEscolha(options = {}) {
     const resposta = prompt(
-        `Gerar PDF de qual vistoria?\n\nDigite o número da viatura, por exemplo: ${state.selectedViatura.padStart(2, "0")}\nOu digite TODAS para gerar todas as viaturas vistoriadas hoje.`,
+        `Gerar PDF de qual vistoria?\n\nDigite o número do teste, por exemplo: ${state.selectedViatura.padStart(2, "0")}\nOu digite TODAS para gerar todos os testes vistoriados hoje.`,
         state.selectedViatura.padStart(2, "0")
     );
 

@@ -183,7 +183,7 @@ function renderHistoricoTable(dados) {
             : '<span class="status-ok">Tudo OK</span>';
         const equipamento = data.categoria === "tablets"
             ? `Tablet ${data.tabletId || data.viaturaId}`
-            : `Viatura ${data.viaturaId}`;
+            : `Teste ${data.viaturaId}`;
 
         tbody.innerHTML += `
             <tr onclick="verDetalhes('${data.id}')">
@@ -340,8 +340,8 @@ export async function exportarVistoriasSelecionadasPDF() {
 
         for (const vistoria of selecionadas) {
             const equipamento = vistoria.categoria === "tablets"
-                ? `Tablet_${formatTwoDigits(vistoria.tabletId || vistoria.viaturaId)}_Viatura_${formatTwoDigits(vistoria.viaturaId)}`
-                : `Viatura_${formatTwoDigits(vistoria.viaturaId)}`;
+                ? `Tablet_${formatTwoDigits(vistoria.tabletId || vistoria.viaturaId)}_Teste_${formatTwoDigits(vistoria.viaturaId)}`
+                : `Teste_${formatTwoDigits(vistoria.viaturaId)}`;
             const categoria = categoryNames[vistoria.categoria] || vistoria.categoria;
             const data = (vistoria.dataEnvio?.toDate?.() || new Date()).toISOString().slice(0, 10);
 
@@ -370,14 +370,14 @@ export function verDetalhes(docId) {
 
     const equipamentoTitulo = vistoria.categoria === "tablets"
         ? `Tablet ${vistoria.tabletId || vistoria.viaturaId}`
-        : `Viatura ${vistoria.viaturaId}`;
+        : `Teste ${vistoria.viaturaId}`;
     title.innerText = `Detalhes: ${categoryNames[vistoria.categoria]} - ${equipamentoTitulo}`;
 
     const pendentes = vistoria.itens.filter(i => i.status !== "ok");
     let html = `<p><strong>Vistoriador:</strong> ${vistoria.vistoriador}</p>`;
     if (vistoria.km) html += `<p><strong>KM:</strong> ${vistoria.km}</p>`;
     if (vistoria.categoria === "tablets") {
-        html += `<p><strong>Tablet:</strong> ${formatTwoDigits(vistoria.tabletId || vistoria.viaturaId)} vinculado à Viatura ${formatTwoDigits(vistoria.viaturaId)}</p>`;
+        html += `<p><strong>Tablet:</strong> ${formatTwoDigits(vistoria.tabletId || vistoria.viaturaId)} vinculado ao Teste ${formatTwoDigits(vistoria.viaturaId)}</p>`;
         if (vistoria.observacoesTablet) html += `<p><strong>Observações:</strong> ${vistoria.observacoesTablet}</p>`;
     }
     if (vistoria.avarias && vistoria.avarias.length > 0) {

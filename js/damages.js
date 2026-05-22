@@ -99,7 +99,7 @@ export function removerAvaria(index) {
 
 export function limparAvariasViatura() {
     if (state.vehicleDamages[state.selectedViatura].length === 0) return;
-    if (!confirm(`Deseja limpar todas as marcações da Viatura ${state.selectedViatura}?`)) return;
+    if (!confirm(`Deseja limpar todas as marcações do Teste ${state.selectedViatura}?`)) return;
     state.vehicleDamages[state.selectedViatura] = [];
     renderDamageMarkers();
     renderDamageList();

@@ -277,11 +277,11 @@ function renderViaturaDashboard() {
         card.className = `viatura-card ${isActive ? "active" : ""}`;
         card.onclick = () => selectViatura(id);
         card.innerHTML = `
-            <span class="viatura-name">Viatura ${id.padStart(2, "0")}</span>
+            <span class="viatura-name">Teste ${id.padStart(2, "0")}</span>
             <div class="status-dots">
                 <span class="dot ${status.ferramentas ? "done" : ""}" title="Ferramentas">🔧</span>
                 <span class="dot ${status.epis ? "done" : ""}" title="EPIs">🦺</span>
-                <span class="dot ${status.viaturas ? "done" : ""}" title="Viatura">🚗</span>
+                <span class="dot ${status.viaturas ? "done" : ""}" title="Teste">🚗</span>
                 <span class="dot ${status.tablets ? "done" : ""}" title="Tablet">📱</span>
             </div>
         `;
@@ -353,8 +353,8 @@ function updateMenuStatus() {
     if (btnEncerrar) {
         btnEncerrar.style.display = (vistoriaCompleta || (vistoriaParcial && concluidas > 0)) ? "block" : "none";
         btnEncerrar.innerText = vistoriaParcial && !vistoriaCompleta
-            ? `📁 Gerar PDF parcial da Viatura ${state.selectedViatura.padStart(2, "0")}`
-            : `📁 Encerrar Vistoria Viatura ${state.selectedViatura.padStart(2, "0")} (Gerar PDF)`;
+            ? `📁 Gerar PDF parcial do Teste ${state.selectedViatura.padStart(2, "0")}`
+            : `📁 Encerrar Vistoria Teste ${state.selectedViatura.padStart(2, "0")} (Gerar PDF)`;
     }
 }
 

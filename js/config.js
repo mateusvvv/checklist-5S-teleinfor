@@ -80,7 +80,7 @@ export const checklistData = {
 };
 
 export const totalViaturas = 9;
-export const categoryNames = { ferramentas: "Ferramentas", epis: "EPIs", viaturas: "Viatura", tablets: "Tablet" };
+export const categoryNames = { ferramentas: "Ferramentas", epis: "EPIs", viaturas: "Teste", tablets: "Tablet" };
 export const vistoriadoresTablet = ["Teste 4", "Teste 5"];
 
 export const damageTypeNames = {
@@ -98,7 +98,7 @@ export const vehicleViewNames = {
     "lateral-esquerda": "Lateral esquerda",
     "lateral-direita": "Lateral direita",
     traseira: "Traseira",
-    veiculo: "Mapa visual da viatura"
+    veiculo: "Mapa visual do teste"
 };
 
 const vehicleMapConfig = {
